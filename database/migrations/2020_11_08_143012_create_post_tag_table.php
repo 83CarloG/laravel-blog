@@ -15,6 +15,11 @@ class CreatePostTagTable extends Migration
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
+            //Tabella pivot, relazione many-to-many users and posts table
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('post_id')->constrained();
+
+
             $table->timestamps();
         });
     }
