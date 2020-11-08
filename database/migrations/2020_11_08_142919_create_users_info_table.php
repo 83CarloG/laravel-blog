@@ -17,7 +17,7 @@ class CreateUsersInfoTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->date('day_of_birth')->nullable();
             $table->text('description')->nullable();
-            $table->string('websitw')->nullable();
+            $table->string('website')->nullable();
         });
     }
 
