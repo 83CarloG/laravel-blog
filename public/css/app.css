@@ -10903,3 +10903,16 @@ a.text-dark:focus {
   }
 }
 
+body,
+.wrapper {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.author__select {
+  width: 60%;
+}
+

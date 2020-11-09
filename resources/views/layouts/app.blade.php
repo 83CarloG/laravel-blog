@@ -8,10 +8,14 @@
     <title>@yield('page-title', 'Blog')</title>
 </head>
 <body>
-    @include('layouts.partials.header')
+    <div class="d-flex flex-column wrapper container">
 
-    @yield('page-content')
+            @include('layouts.partials.header')
 
-    @include('layouts.partials.footer')
+            @yield('page-content')
+
+            @include('layouts.partials.footer')
+
+    </div>
 </body>
 </html>

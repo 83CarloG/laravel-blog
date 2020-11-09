@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -25,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('posts.create', compact('users'));
     }
 
     /**
@@ -36,7 +38,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $request->validate([
+
+            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'excerpt' => 'required',
+            'published' => 'boolean',
+            'slug' => 'required|unique:posts'
+        ]);
+        $newPost = new Post;
+        $newPost->fill($data);
+
+        $newPost->save();
+
+        return redirect('posts.index');
     }
 
     /**
@@ -58,7 +75,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Post::find($id);
+        $users = User::all();
+        return view('posts.edit', compact('data'));
     }
 
     /**
